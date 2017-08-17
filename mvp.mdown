@@ -1,0 +1,34 @@
+{questions: [
+  {
+    q: 'What is the url of your login page?',
+    type: 'text'
+  },
+  {
+    q: 'What is the selector for your login form?',
+    type: 'text'
+  },
+  "username"
+  "password"
+  "login button"
+  {
+    q: 'Give me a valid username',
+    type: 'text'
+  },
+  {
+    q: 'Give me the password for that user',
+    type: 'text'
+  },
+  {
+    q: 'Give me a non-existant username',
+    type: 'text',
+    prefill with random gook
+  },
+  {
+    q: 'Give me an invalid username (e.g. too short, not an email address)',
+    type: 'text',
+    prefill with short random gook
+  },
+  what error messages should we see?
+  'forgot password link'  
+  register link
+]}

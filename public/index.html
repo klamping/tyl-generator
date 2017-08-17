@@ -1,0 +1,242 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Test Your Login</title>
+  <meta name="description" content="Test Your Login">
+
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #5068A9 url('./greyzz.png');
+      min-height: 100vh;
+      color: #324E7B;
+      font-family: "Arial Rounded MT Bold","Helvetica Rounded",Arial,sans-serif;
+    }
+    form a {
+      color: #324E7B;
+    }
+    form a:hover,
+    form a:focus {
+      color: #5068A9;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      font-size: 16px;
+      padding: 2em 0 1em;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin: 3.5rem 0 1.5rem;
+      line-height: 1;
+      padding: 0;
+      font-size: 4.5rem;
+      color: #E9E9E5;
+      letter-spacing: 1px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-shadow: 1px 1px 3px rgba(50, 78, 123, 0.83);
+    }
+    h2 {
+      text-align: center;
+      margin: 0;
+      padding: 0 4rem;
+      font-size: 2rem;
+      color: #E9E9E5;
+      text-shadow: 1px 1px 3px rgba(50, 78, 123, 0.83);
+    }
+    h2 a {
+      color: #86A6DF;
+    }
+    h2 a:hover,
+    h2 a:focus {
+      color: #E9E9E5;
+    }
+    .icon {
+      display: inline-block;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-left: 4px;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+      vertical-align: top;
+    }
+    .icon:hover {
+      cursor: help;
+    }
+
+    #description {
+      color: #86A6DF;
+      border: 3px solid #86A6DF;
+      margin: 2rem 0 0;
+      font-size: 1.3em;
+      max-width: 60rem;
+      border-radius: 10px;
+      background: #324E7B;
+      -moz-transition: 1s;
+      -ms-transition: 1s;
+      -o-transition: 1s;
+      -webkit-transition: 1s;
+      transition: 1s;
+      overflow: hidden;
+      max-height: 1rem;
+    }
+    #description p {
+      margin: 2rem;
+    }
+    #description.active {
+      max-height: 20rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #5068A9;
+      border-radius: 4px;
+      box-shadow: 1px 1px 3px 0px rgba(50, 78, 123, 0.83);
+      max-width: 60rem;
+      /*max-height: 5rem;*/
+      /*max-height: calc(100% - 2rem);*/
+      padding: 2em 4em 4em;
+      margin: 3rem 0 0;
+      background: #86A6DF;
+      overflow: auto;
+    }
+    form label {
+      flex: 1;
+      font-size: 1.5rem;
+      margin-top: 1.5em;
+    }
+    form input {
+      width: 100%;
+      font-size: 1.4rem;
+      box-sizing: border-box;
+      margin-top: 1rem;
+      background: #F8F8F8;
+      border: 2px solid transparent;
+      border-bottom-color: #5068A9;
+      padding: .5em;
+      color: #324E7B;
+    }
+    form input:focus {
+      background: #fff;
+      outline: 0;
+      border-color: #5068A9;
+    }
+
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+        color:    #86A6DF;
+    }
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+       color:    #86A6DF;
+       opacity:  1;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+       color:    #86A6DF;
+       opacity:  1;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+       color:    #86A6DF;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+       color:    #86A6DF;
+    }
+
+    .submit-button {
+      flex: 1;
+      align-self: center;
+      width: 50%;
+    }
+    form button {
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 1px;
+      width: 100%;
+      font-size: 1.8rem;
+      background: #324E7B;
+      color: #E9E9E5;
+      margin-top: 2rem;
+      border: 0;
+      box-shadow: 1px 1px 3px 0px rgba(50, 78, 123, 0.83);
+      padding: 1.3rem 2rem;
+    }
+    form button:hover {
+      background: #5068A9;
+      cursor: pointer;
+      color: #E9E9E5;
+    }
+  </style>
+  <link rel="stylesheet" href="./houdini.min.css">
+</head>
+
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-info" viewBox="0 0 32 32">
+      <title>info</title>
+      <path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path>
+      <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path>
+      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
+    </symbol>
+  </svg>
+
+  <div class="container">
+    <h1>Test Your Login</h1>
+
+    <h2>A helping hand to get you started with automated functional testing<a class="collapse-toggle" data-collapse href="#description"><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></h2>
+
+    <div id="description" class="collapse">
+      <p>Testyourlog.in will create a WebdriverIO script customized to your site's login process.</p>
+      <p>It will include installation instructions and be tailored to your specific website, including URLs, elements and messages.</p>
+      <p>Simply fill out the form below and a compressed folder will be generated will all the code and instructions you need</p>
+    </div>
+
+    <form action="./generator" method="post">
+      <label>
+        So, what's the url of the login page you want to test?
+        <input type="text" required name="url" placeholder="https://" />
+      </label>
+      <label>
+        Awesome. How about <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your login form?
+        <input type="text" required name="login-form" placeholder="e.g. #login"  />
+      </label>
+      <label>
+        Nice. And <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your username input field?
+        <input type="text" required name="username-selector" placeholder="e.g. #username" />
+      </label>
+      <label>
+        Makes sense. Of course I need to know <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your password input field as well?
+        <input type="text" required name="password-selector" placeholder="e.g. #password" />
+      </label>
+      <label>
+        Of course. How about the login button. What is its selector?
+        <input type="text" required name="submit-selector" placeholder="e.g. #login button" />
+      </label>
+      <label>
+        Thanks! Okay, now give me a valid username...
+        <input type="text" required name="valid-username" />
+      </label>
+      <label>
+        and how about a valid password as well
+        <input type="text" required name="valid-password" />
+      </label>
+      <label>
+        Now I need a non-registered username
+        <input type="text" required name="nonexistant-password" value="gobbledegook"/>
+      </label>
+      <div class="submit-button">
+        <button type="submit">Test my Login!</button>
+      </div>
+    </form>
+  </div>
+  <script src="./houdini.min.js"></script>
+  <script>
+    houdini.init();
+  </script>
+</body>
+</html>
