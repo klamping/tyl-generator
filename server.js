@@ -23,7 +23,6 @@ app.post('/generator', function (req, res) {
 
     // delete the existing build directory
     rimraf('./temp', () => {
-      console.log(body);
       generateTemplate(body, res);
     })
   });
