@@ -12,6 +12,7 @@ const rimraf = require('rimraf');
 const formBody = require('body/form')
 
 app.use(express.static('public'))
+app.use('/example', express.static('example'))
 
 app.post('/generator', function (req, res) {
   formBody(req, res, function (err, body) {
