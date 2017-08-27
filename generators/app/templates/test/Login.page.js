@@ -1,5 +1,5 @@
 class Login {
-  get email () { return $('{{emailSelector}}'); }
+  get email () { return $('{{usernameSelector}}'); }
   get password () { return $('{{passwordSelector}}'); }
   get submit () { return $('{{submitSelector}}'); }
 

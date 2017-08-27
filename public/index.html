@@ -201,33 +201,33 @@
         So, what's the url of the login page you want to test?
         <input type="text" required name="url" placeholder="https://" />
       </label>
-      <label>
+      <!-- <label>
         Awesome. How about <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your login form?
         <input type="text" required name="login-form" placeholder="e.g. #login"  />
+      </label> -->
+      <label>
+        Nice. How about <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your username input field?
+        <input type="text" required name="usernameSelector" placeholder="e.g. #username" />
       </label>
       <label>
-        Nice. And <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your username input field?
-        <input type="text" required name="username-selector" placeholder="e.g. #username" />
-      </label>
-      <label>
-        Makes sense. Of course I need to know <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your password input field as well?
-        <input type="text" required name="password-selector" placeholder="e.g. #password" />
+        Makes sense. Of course I also need to know the selector of your password input field as well?
+        <input type="text" required name="passwordSelector" placeholder="e.g. #password" />
       </label>
       <label>
         Of course. How about the login button. What is its selector?
-        <input type="text" required name="submit-selector" placeholder="e.g. #login button" />
+        <input type="text" required name="submitSelector" placeholder="e.g. #login button" />
       </label>
       <label>
         Thanks! Okay, now give me a valid username...
-        <input type="text" required name="valid-username" />
+        <input type="text" required name="validUser" />
       </label>
       <label>
         and how about a valid password as well
-        <input type="text" required name="valid-password" />
+        <input type="text" required name="validPass" />
       </label>
       <label>
         Now I need a non-registered username
-        <input type="text" required name="nonexistant-password" value="gobbledegook"/>
+        <input type="text" required name="invalidUser" value="gobbledegook"/>
       </label>
       <div class="submit-button">
         <button type="submit">Test my Login!</button>

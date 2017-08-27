@@ -1,29 +1,36 @@
-'use strict';
-var path = require('path');
-var http = require('http');
+const express = require('express')
+const app = express()
 
-var zlib = require('zlib');
-var mime = require('mime');
-var archiver = require('archiver');
+const zlib = require('zlib');
+const mime = require('mime');
+const archiver = require('archiver');
 
 const Scaffold = require('scaffold-generator')
 const mustache = require('mustache')
 const rimraf = require('rimraf');
 
-const fs = require('fs');
+const formBody = require('body/form')
 
-var formBody = require("body/form")
+app.use(express.static('public'))
 
-let options = {
-  url: 'http://testyourlog.in/example/',
-  validUser: 'valid@user.com',
-  validPass: 'hunter2',
-  invalidUser: 'gobledeegook',
-  emailSelector: 'input[name="email"]',
-  passwordSelector: 'input[name="password"]',
-  submitSelector: '*=Login',
-  errorSelector: 'E-mail address must be a valid e-mail',
-};
+app.post('/generator', function (req, res) {
+  formBody(req, res, function (err, body) {
+    if (err) {
+        res.statusCode = 500
+        return res.end("NO U")
+    }
+
+    // delete the existing build directory
+    rimraf('./temp', () => {
+      console.log(body);
+      generateTemplate(body, res);
+    })
+  });
+})
+
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
 
 function generateTemplate(options, res) {
   // All variables are HTML-escaped by mustache by default,
@@ -32,11 +39,13 @@ function generateTemplate(options, res) {
   // or triple mustache `{{{name}}}` should be used.
   mustache.escape = v => v;
 
+  let buildDir = './temp/build_' + Date.now();
+
   new Scaffold({
     data: options,
     render: mustache.render
   })
-  .copy('./generators/app/templates', './build')
+  .copy('./generators/app/templates', buildDir)
   .then(() => {
     var archive = archiver('zip', {
         zlib: { level: 9 } // Sets the compression level.
@@ -66,41 +75,8 @@ function generateTemplate(options, res) {
     archive.pipe(res);
 
     // append files from a sub-directory, putting its contents at the root of archive
-    archive.directory('build/', false);
+    archive.directory(buildDir, false);
 
     archive.finalize();
   })
 }
-
-var server = http.createServer(function(req, res) {
-  var uri = url.parse(req.url).pathname;
-  var filePath = req.url;
-  if  (filePath == 'generate') {
-    formBody(req, res, function (err, body) {
-      if (err) {
-          res.statusCode = 500
-          return res.end("NO U")
-      }
-
-      // delete the existing build directory
-      rimraf('./build', () => {
-        generateTemplate(body, res);
-      })
-    });
-  } else {
-    var filename = path.join(process.cwd(), uri);
-    path.exists(filename, function(exists) {
-        if(!exists) {
-            res.writeHead(404, {'Content-Type': 'text/plain'});
-            res.write('404 Not Found\n');
-            res.end();
-            return;
-        }
-        var mimeType = mime.lookup(filename);
-        res.writeHead(200, {'Content-Type':mimeType});
-
-        fs.createReadStream(filename).pipe(res);
-    });
-  }
-
-}).listen(8000);
