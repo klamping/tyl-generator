@@ -21,6 +21,16 @@ app.post('/generator', function (req, res) {
         return res.end("NO U")
     }
 
+    // replace any single quotes with double-quotes
+    console.log(body);
+    body.usernameSelector = body.usernameSelector.replace(/'/g, '"');
+    body.passwordSelector = body.passwordSelector.replace(/'/g, '"');
+    body.submitSelector = body.submitSelector.replace(/'/g, '"');
+
+    body.validUser = body.validUser.replace(/'/g, "\\'")
+    body.validPass = body.validPass.replace(/'/g, "\\'")
+    body.invalidUser = body.invalidUser.replace(/'/g, "\\'")
+
     // delete the existing build directory
     rimraf('./temp', () => {
       generateTemplate(body, res);
