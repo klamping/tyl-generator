@@ -204,7 +204,7 @@
 
     <form action="./generator" method="post">
       <label>
-        So, what's the url of the login page you want to test?
+        Login URL:
         <input type="text" required name="url" placeholder="https://" />
       </label>
       <!-- <label>
@@ -212,33 +212,35 @@
         <input type="text" required name="login-form" placeholder="e.g. #login"  />
       </label> -->
       <label>
-        Nice. How about <a href="http://webdriver.io/guide/usage/selectors.html">the selector</a> of your username input field?
+        <a href="http://webdriver.io/guide/usage/selectors.html">The selector</a> of your username input field:
         <input type="text" required name="usernameSelector" placeholder="e.g. #username" />
       </label>
       <label>
-        Makes sense. Of course I also need to know the selector of your password input field as well?
+        The selector of your password input field:
         <input type="text" required name="passwordSelector" placeholder="e.g. #password" />
       </label>
       <label>
-        Of course. How about the login button. What is its selector?
+        The selector of your login button:
         <input type="text" required name="submitSelector" placeholder="e.g. #login button" />
       </label>
       <label>
-        Thanks! Okay, now give me a valid username...
-        <input type="text" required name="validUser" />
+        A valid username:*
+        <input type="text" name="validUser" />
       </label>
       <label>
-        and how about a valid password as well
-        <input type="text" required name="validPass" />
+        A valid password:*
+        <input type="text" name="validPass" />
       </label>
       <label>
-        Now I need a non-registered username
+        A non-registered username:
         <input type="text" required name="invalidUser" value="gobbledegook"/>
       </label>
       <div class="submit-button">
         <button type="submit">Test my Login!</button>
       </div>
+      <p style="margin-top:2rem;">* I promise not to steal your username/password for malicious purposes. Regardless, these should be <em>test</em> user accounts that can't terribly mess things up. If you don't trust me, leave these field blank and fill them in in the generated code.</p>
     </form>
+
 
     <p style="margin:1em 0 2em;color: #ddd;">Sponsored by <a href="http://learn.webdriver.io" style="color: #eee;">learn.webdriver.io</a> | <a href="/privacy.html" style="color: #eee;">Privacy Policy</a></p>
   </div>
