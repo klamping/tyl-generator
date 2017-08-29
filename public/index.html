@@ -64,6 +64,16 @@
     h2 a:focus {
       color: #E9E9E5;
     }
+    h3 {
+      text-align: center;
+      margin: 0;
+      padding: 0 1rem 1rem;
+      font-size: 2rem;
+      border-bottom: 1px solid #fff;
+      color: #E9E9E5;
+      text-shadow: 1px 1px 3px rgba(50, 78, 123, 0.83);
+      font-family: Arial, Helvetica, sans-serif;
+    }
     .icon {
       display: inline-block;
       width: 1.1rem;
@@ -192,12 +202,13 @@
 
     <div class="description">
       <p>Testyourlog.in will create a WebdriverIO script customized to your site's login process.</p>
-      <p>It will include installation instructions and be tailored to your specific website, including URLs, elements and messages.</p>
-      <p>Simply fill out the form below and a compressed folder will be generated will all the code and instructions you need.</p>
+      <p>It will include installation instructions and be tailored to your specific website, including URLs and elements.</p>
+      <p>Simply fill out the form below and a compressed folder will be generated with all the code and instructions you need.</p>
       <p><a href="/privacy.html">(Pretty much) Nothing is stored on the server</a>.</p>
     </div>
 
     <form action="./generator" method="post">
+      <h3>Your Site Information</h3>
       <label>
         Login URL:
         <input type="text" required name="url" placeholder="https://" />
