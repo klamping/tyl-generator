@@ -78,7 +78,7 @@
       cursor: help;
     }
 
-    #description {
+    .description {
       color: #86A6DF;
       border: 3px solid #86A6DF;
       margin: 2rem 0 0;
@@ -92,13 +92,16 @@
       -webkit-transition: 1s;
       transition: 1s;
       overflow: hidden;
-      max-height: 1rem;
     }
-    #description p {
+    .description p {
       margin: 2rem;
     }
-    #description.active {
-      max-height: 20rem;
+    .description a {
+      color: #ccc;
+    }
+    .description a:hover,
+    .description a:focus {
+      color: #E9E9E5;
     }
 
     form {
@@ -182,24 +185,16 @@
 </head>
 
 <body>
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="icon-info" viewBox="0 0 32 32">
-      <title>info</title>
-      <path d="M14 9.5c0-0.825 0.675-1.5 1.5-1.5h1c0.825 0 1.5 0.675 1.5 1.5v1c0 0.825-0.675 1.5-1.5 1.5h-1c-0.825 0-1.5-0.675-1.5-1.5v-1z"></path>
-      <path d="M20 24h-8v-2h2v-6h-2v-2h6v8h2z"></path>
-      <path d="M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13z"></path>
-    </symbol>
-  </svg>
-
   <div class="container">
     <h1>Test Your Login</h1>
 
-    <h2>A helping hand to get you started with automated functional testing<a class="collapse-toggle" data-collapse href="#description"><svg class="icon icon-info"><use xlink:href="#icon-info"></use></svg></a></h2>
+    <h2>A helping hand to get you started with automated functional testing</h2>
 
-    <div id="description" class="collapse">
+    <div class="description">
       <p>Testyourlog.in will create a WebdriverIO script customized to your site's login process.</p>
       <p>It will include installation instructions and be tailored to your specific website, including URLs, elements and messages.</p>
-      <p>Simply fill out the form below and a compressed folder will be generated will all the code and instructions you need</p>
+      <p>Simply fill out the form below and a compressed folder will be generated will all the code and instructions you need.</p>
+      <p><a href="/privacy.html">(Pretty much) Nothing is stored on the server</a>.</p>
     </div>
 
     <form action="./generator" method="post">
@@ -238,16 +233,12 @@
       <div class="submit-button">
         <button type="submit">Test my Login!</button>
       </div>
-      <p style="margin-top:2rem;">* I promise not to steal your username/password for malicious purposes. Regardless, these should be <em>test</em> user accounts that can't terribly mess things up. If you don't trust me, leave these field blank and fill them in in the generated code.</p>
+      <p style="margin-top:2rem;">* I promise not to steal your username/password for malicious purposes. Regardless, these should be <em>test</em> user accounts that can't terribly mess things up. If you don't trust me, leave these field blank and fill them in within the code.</p>
     </form>
 
 
     <p style="margin:1em 0 2em;color: #ddd;">Sponsored by <a href="http://learn.webdriver.io" style="color: #eee;">learn.webdriver.io</a> | <a href="/privacy.html" style="color: #eee;">Privacy Policy</a></p>
   </div>
-  <script src="./houdini.min.js"></script>
-  <script>
-    houdini.init();
-  </script>
   <!-- Piwik -->
   <script type="text/javascript">
     var _paq = _paq || [];
