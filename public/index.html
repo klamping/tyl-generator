@@ -192,6 +192,9 @@
     }
   </style>
   <link rel="stylesheet" href="./houdini.min.css">
+  <script type="text/javascript">
+    var _paq = _paq || [];
+  </script>
 </head>
 
 <body>
@@ -242,7 +245,7 @@
         <input type="text" required name="invalidUser" value="gobbledegook"/>
       </label>
       <div class="submit-button">
-        <button type="submit">Test my Login!</button>
+        <button type="submit" onclick="_paq.push(['trackEvent', 'Click', 'Generate'])">Test my Login!</button>
       </div>
       <p style="margin-top:2rem;">* I promise not to steal your username/password for malicious purposes. Regardless, these should be <em>test</em> user accounts that can't terribly mess things up. If you don't trust me, leave these field blank and fill them in within the code.</p>
     </form>
@@ -252,7 +255,6 @@
   </div>
   <!-- Piwik -->
   <script type="text/javascript">
-    var _paq = _paq || [];
     // tracker methods like "setCustomDimension" should be called before "trackPageView"
     _paq.push(['trackPageView']);
     _paq.push(['enableLinkTracking']);
