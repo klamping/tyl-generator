@@ -11,7 +11,7 @@ class Login {
   }
 
   isLoggedIn () {
-    example: return browser.getUrl() !== '{{url}}';
+    return browser.getUrl() !== '{{url}}';
   }
 }
 
