@@ -42,7 +42,7 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
 
-function generateTemplate(options, res) {
+function generateTemplate(body, res) {
   // All variables are HTML-escaped by mustache by default,
   // and `lib/index.js` will be escaped to `lib&#x2F;index.js`.
   // To avoid this, override the `mustache.escape`
@@ -52,10 +52,10 @@ function generateTemplate(options, res) {
   let buildDir = './temp/build_' + Date.now();
 
   new Scaffold({
-    data: options,
+    data: body,
     render: mustache.render
   })
-  .copy('./generators/app/templates', buildDir)
+  .copy('./generators/app/template-v6', buildDir)
   .then(() => {
     var archive = archiver('zip', {
         zlib: { level: 9 } // Sets the compression level.
@@ -76,7 +76,7 @@ function generateTemplate(options, res) {
       throw err;
     });
 
-    var mimetype = mime.lookup('.zip');
+    var mimetype = mime.getType('.zip');
 
     res.setHeader('Content-disposition', 'attachment; filename=testyourlogin.zip');
     res.setHeader('Content-type', mimetype);

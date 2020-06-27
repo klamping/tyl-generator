@@ -190,6 +190,15 @@
       cursor: pointer;
       color: #E9E9E5;
     }
+
+    .example-fill {
+      padding: 10px 15px;
+      font-size: .7em;
+      margin: 0;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
   </style>
   <link rel="stylesheet" href="./houdini.min.css">
   <script type="text/javascript">
@@ -211,7 +220,7 @@
     </div>
 
     <form action="./generator" method="post">
-      <h3>Your Site Information</h3>
+      <h3>Login Page Details&nbsp;&nbsp;&smashp;&nbsp;&nbsp;<button onclick="fillForm(); return false;" class="example-fill">Fill with sample data</button></h3>
       <label>
         Login URL:
         <input type="text" required name="url" placeholder="https://" />
@@ -267,5 +276,24 @@
     })();
   </script>
   <!-- End Piwik Code -->
+
+  <script type="text/javascript">
+    function fillForm () {
+      const defaults = {
+        url: 'https://testyourlog.in/example/',
+        usernameSelector: '[name="email"]',
+        passwordSelector: '[name="password"]',
+        submitSelector: 'button=Login',
+        validUser: 'valid@user.com',
+        validPass: 'hunter2'
+      };
+
+      Object.keys(defaults).forEach(formItemName => {
+        document.querySelector(`[name="${formItemName}"]`).value = defaults[formItemName];
+      })
+
+      return false;
+    }
+  </script>
 </body>
 </html>

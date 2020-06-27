@@ -1,0 +1,30 @@
+{
+  "name": "login-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "shx rm -rf ./errorShots",
+    "lint": "eslint .",
+    "test": "npm run clean && wdio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^9.0.1",
+    "shx": "^0.3.2",
+    "tempy": "^0.5.0"
+  },
+  "devDependencies": {
+    "@wdio/cli": "^6.1.22",
+    "eslint": "^7.3.1",
+    "eslint-config-standard": "^14.1.1",
+    "@wdio/local-runner": "^6.1.22",
+    "@wdio/mocha-framework": "^6.1.19",
+    "@wdio/spec-reporter": "^6.1.14",
+    "@wdio/sync": "^6.1.14",
+    "chromedriver": "^83.0.0",
+    "wdio-chromedriver-service": "^6.0.3"
+  }
+}
